@@ -1,0 +1,14 @@
+.container {
+  width: 500px;
+  height: fit-content;
+  margin-top: 40px;
+  border-radius: 5%;
+  background-color: whitesmoke;
+}
+.content {
+  display: flex;
+  justify-content: center;
+}
+.red {
+  color: red;
+}

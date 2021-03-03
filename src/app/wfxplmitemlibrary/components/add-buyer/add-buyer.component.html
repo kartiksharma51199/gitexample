@@ -1,0 +1,65 @@
+<body>
+  <div class="content">
+    <div class="container">
+      <h1 style="text-align: center">Add Buyer</h1>
+      <app-wfxtextbox
+        #txt
+        [itemJsonDef]="itemJsonDef[0]"
+        [(sectionJsonData)]="jsonDataName"
+        (OnChange)="getName($event)"
+      >
+      </app-wfxtextbox>
+      <p class="red" *ngIf="namedisplay">Please enter name</p>
+      <app-wfxtextarea
+        #txta
+        [itemJsonDef]="textAreaJsonDef"
+        [(sectionJsonData)]="textAreajsonData"
+        (OnChange)="getDescription($event)"
+      ></app-wfxtextarea>
+      <p class="red" *ngIf="descriptiondisplay">Please enter description</p>
+
+      <app-wfxselect
+        #select
+        [selectOptionList]="selectCountries"
+        [itemJsonDef]="itemJsonDef[1]"
+        [(sectionJsonData)]="jsonDatacountry"
+        (sectionJsonDataChange)="getCountry($event)"
+      ></app-wfxselect>
+
+      <app-wfxselect
+        [selectOptionList]="selectCategories"
+        [itemJsonDef]="itemJsonDef[2]"
+        [(sectionJsonData)]="jsonDatacategory"
+        (sectionJsonDataChange)="getCategory($event)"
+      ></app-wfxselect>
+
+      <app-wfxlabel
+        #lbl
+        [itemJsonDef]="itemJsonDef[4]"
+        [(sectionJsonData)]="GSTNlblJsonData"
+      ></app-wfxlabel>
+
+      <app-wfxslidetoggle
+        #slidetoggle
+        [itemJsonDef]="itemJsonDef[3]"
+        [(sectionJsonData)]="jsonDatatoggle"
+        (sectionJsonDataChange)="getGSTN($event)"
+      ></app-wfxslidetoggle>
+
+      <app-wfxtextbox
+        [itemJsonDef]="itemJsonDef[5]"
+        [(sectionJsonData)]="jsonDatacapacity"
+        (OnChange)="getCapacityOfBuying($event)"
+      ></app-wfxtextbox>
+      <app-wfxbutton
+        #btnSampleFormat
+        [itemJsonDef]="btnSampleFormatJsonDef"
+        (OnClick)="saveData()"
+      ></app-wfxbutton>
+    </div>
+  </div>
+  <div *ngIf="displaydetails">
+    <h2 style="text-align: center">Buyer Details</h2>
+    <h3 style="text-align: center">{{ BuyerData | json }}</h3>
+  </div>
+</body>
